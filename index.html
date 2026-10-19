@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn2Code | Coding Notebook</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="logo" href="#">
+            <span class="logo-icon">✎</span> Learn2Code<span class="period">.</span>
+        </a>
+        <span class="top-note">my coding notebook</span>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <p class="eyebrow">YOUR PERSONAL STUDY SPACE</p>
+            <h1>Learn a little.<br><span>Code a lot.</span></h1>
+            <p class="intro-text">
+                A notebook for your coding journey. Flip a card, test your knowledge,
+                and write down explanations that make sense to you.
+            </p>
+        </section>
+
+        <section class="stats">
+            <div class="stat">
+                <span class="stat-number" id="totalCount">63</span>
+                <span class="stat-label">Starter cards</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number" id="knownCount">0</span>
+                <span class="stat-label">Mastered</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number" id="customCount">0</span>
+                <span class="stat-label">My cards</span>
+            </div>
+        </section>
+
+        <section class="study-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">PICK YOUR TOPIC</p>
+                    <h2>Time to revise<span class="period">.</span></h2>
+                </div>
+                <button class="button button-outline" id="addCardBtn">＋ New card</button>
+            </div>
+
+            <div class="filters">
+                <label>
+                    <span>Language</span>
+                    <select id="languageSelect">
+                        <option value="C">C</option>
+                        <option value="C++">C++</option>
+                        <option value="Java">Java</option>
+                    </select>
+                </label>
+
+                <label>
+                    <span>Difficulty</span>
+                    <select id="difficultySelect">
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </label>
+
+                <label class="search-label">
+                    <span>Find a card</span>
+                    <input id="searchInput" type="search" placeholder="Search topics...">
+                </label>
+            </div>
+
+            <div class="progress-wrap">
+                <div class="progress-info">
+                    <span id="deckLabel">C · Easy</span>
+                    <span id="deckProgress">0 mastered</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="card-counter" id="cardCounter">Card 1 of 7</div>
+
+            <button class="flashcard" id="flashcard" type="button" aria-label="Flip flashcard">
+                <span class="card-corner">LEARN2CODE</span>
+                <span class="card-side card-front">
+                    <span class="card-type">QUESTION / TOPIC</span>
+                    <span class="card-title" id="cardQuestion">What is a variable?</span>
+                    <span class="card-hint">Tap the card to reveal the answer ↻</span>
+                    <span class="card-number" id="frontNumber">01</span>
+                </span>
+                <span class="card-side card-back">
+                    <span class="card-type">YOUR NOTES</span>
+                    <span class="card-title" id="cardAnswer">A variable stores data.</span>
+                    <pre class="code-example" id="cardCode"></pre>
+                    <span class="card-hint">Tap again to return ↻</span>
+                </span>
+            </button>
+
+            <div class="card-actions">
+                <button class="button button-outline" id="prevBtn">← Previous</button>
+                <button class="button button-main" id="flipBtn">Reveal answer</button>
+                <button class="button button-outline" id="nextBtn">Next →</button>
+            </div>
+
+            <div class="knowledge-actions">
+                <button class="button button-known" id="knownBtn">✓ I know this</button>
+                <button class="button button-review" id="reviewBtn">↻ Review again</button>
+            </div>
+
+            <p class="keyboard-hint">Tip: click the card to flip it. Use the buttons to move between cards.</p>
+        </section>
+
+        <section class="my-notes">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">MAKE IT YOUR OWN</p>
+                    <h2>My understanding<span class="period">.</span></h2>
+                </div>
+            </div>
+            <p class="notes-description">
+                Rewrite the current card's explanation in your own words.
+                Your personal note is saved automatically.
+            </p>
+            <textarea id="personalNote" rows="4"
+                placeholder="In my own words, this means..."></textarea>
+            <p class="save-message" id="saveMessage">Your notes are saved in this browser.</p>
+            <div class="custom-actions">
+                <button class="button button-main" id="saveNoteBtn">Save my note</button>
+                <button class="button button-outline" id="editCardBtn">Edit this card</button>
+                <button class="button button-danger" id="deleteCardBtn" hidden>Delete my card</button>
+            </div>
+        </section>
+
+        <section class="quick-guide">
+            <p class="eyebrow">A SIMPLE STUDY ROUTINE</p>
+            <h2>How to use this notebook</h2>
+            <div class="guide-grid">
+                <div class="guide-item">
+                    <span class="guide-number">01</span>
+                    <h3>Read the front</h3>
+                    <p>Try to answer the question before flipping the card.</p>
+                </div>
+                <div class="guide-item">
+                    <span class="guide-number">02</span>
+                    <h3>Check your answer</h3>
+                    <p>Compare your answer with the explanation and code example.</p>
+                </div>
+                <div class="guide-item">
+                    <span class="guide-number">03</span>
+                    <h3>Make it yours</h3>
+                    <p>Edit a card or add your own notes using words you understand.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>Learn2Code © 2026</span>
+        <span>One page at a time, one concept at a time.</span>
+    </footer>
+
+    <dialog id="cardDialog">
+        <form id="cardForm">
+            <div class="dialog-heading">
+                <div>
+                    <p class="eyebrow">YOUR NOTEBOOK</p>
+                    <h2 id="dialogTitle">Create a flashcard</h2>
+                </div>
+                <button type="button" class="close-btn" id="closeDialogBtn" aria-label="Close">×</button>
+            </div>
+
+            <label>
+                Language
+                <select id="formLanguage" required>
+                    <option value="C">C</option>
+                    <option value="C++">C++</option>
+                    <option value="Java">Java</option>
+                </select>
+            </label>
+
+            <label>
+                Difficulty
+                <select id="formDifficulty" required>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
+            </label>
+
+            <label>
+                Question / Topic
+                <input id="formQuestion" maxlength="160" required placeholder="e.g. What is a pointer?">
+            </label>
+
+            <label>
+                Explanation in your own words
+                <textarea id="formAnswer" rows="4" required placeholder="Write an explanation..."></textarea>
+            </label>
+
+            <label>
+                Code example (optional)
+                <textarea id="formCode" rows="3" placeholder="Write a short code example..."></textarea>
+            </label>
+
+            <div class="dialog-actions">
+                <button type="button" class="button button-outline" id="cancelDialogBtn">Cancel</button>
+                <button type="submit" class="button button-main">Save flashcard</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="cards.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
